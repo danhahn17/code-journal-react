@@ -1,4 +1,20 @@
+// import { FormEvent } from 'react';
 import placeholderimage from './assets/placeholder-image-square.jpg';
+
+// type NewEntryProps = {
+//   onSubmit: () => void;
+// }
+
+// function OnSubmit(event: FormEvent<HTMLFormElement>) {
+//   event.preventDefault();
+//   const form = event.currentTarget;
+//   const formData = new FormData(form);
+//   console.log(
+//     `{ Title: ${formData.get('formTitle')}, URL: ${formData.get(
+//       'formURL'
+//     )} }`
+//   );
+// }
 
 export function NewEntry() {
   return (
@@ -12,8 +28,8 @@ export function NewEntry() {
           </div>
         </div>
 
-        <ul className="entry-ul">
-          <li data-entry-id="">
+        <form>
+          <li className="entry-ul" data-entry-id="">
             <div className="row">
               <div className="column-half">
                 <img
@@ -61,24 +77,23 @@ export function NewEntry() {
                 <label className="margin-bottom-1 d-block" htmlFor="formNotes">
                   Notes
                 </label>
-                <textarea
+                <input
                   required
-                  class="input-b-color text-padding input-b-radius purple-outline d-block width-100"
+                  className="input-b-color text-padding input-b-radius purple-outline d-block width-100"
                   name="formNotes"
                   id="formNotes"
-                  cols="30"
-                  rows="10"></textarea>
-              </div>
-            </div>
-            <div className="row">
-              <div className="column-full d-flex justify-between">
-                <button className="input-b-radius text-padding purple-background white-text">
-                  SAVE
-                </button>
+                />
               </div>
             </div>
           </li>
-        </ul>
+          <div className="row">
+            <div className="column-full d-flex justify-between">
+              <button className="input-b-radius text-padding purple-background white-text">
+                SAVE
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );
