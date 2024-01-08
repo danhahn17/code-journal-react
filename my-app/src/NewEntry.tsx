@@ -1,6 +1,6 @@
 import placeholderimage from './assets/placeholder-image-square.jpg';
 
-export function HomePage() {
+export function NewEntry() {
   return (
     <div className="row">
       <div className="column-full">
