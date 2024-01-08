@@ -1,13 +1,13 @@
 import placeholderimage from './assets/placeholder-image-square.jpg';
 
-export function NewEntry() {
+export function EditEntry() {
   return (
     <div className="row">
       <div className="column-full">
         <div className="container" data-view="entries">
           <div className="row">
             <div className="column-full d-flex justify-between align-center">
-              <h1>New Entry</h1>
+              <h1>Edit Entry</h1>
             </div>
           </div>
         </div>
@@ -72,6 +72,12 @@ export function NewEntry() {
             </div>
             <div className="row">
               <div className="column-full d-flex justify-between">
+                <button
+                  className="delete-entry-button"
+                  type="button"
+                  id="deleteEntry">
+                  Delete Entry
+                </button>
                 <button className="input-b-radius text-padding purple-background white-text">
                   SAVE
                 </button>
