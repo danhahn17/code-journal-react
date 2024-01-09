@@ -14,7 +14,7 @@ type Data = {
 
 const dataKey = 'code-journal-data';
 
-function readData(): Data {
+export function readData(): Data {
   let data: Data;
   const localData = localStorage.getItem(dataKey);
   if (localData) {

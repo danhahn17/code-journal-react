@@ -1,6 +1,31 @@
 import placeholderimage from './assets/placeholder-image-square.jpg';
+import { readEntries } from './data.ts'
 
 export function ViewEntry() {
+
+  const readDataVar = readEntries();
+  const entries = readDataVar.map((entry)=>(<li data-entry-id="">
+  <div className="row">
+    <div className="column-half">
+      <img
+        className="input-b-radius form-image"
+        src={entry.photoUrl}
+        alt=""
+      />
+    </div>
+    <div className="column-half">
+      <div className="row">
+        <div className="column-full d-flex justify-between">
+          <h3>{entry.title}</h3>
+          <i className="fa-solid fa-pencil"></i>
+        </div>
+      </div>
+      <p>{entry.notes}</p>
+    </div>
+  </div>
+</li>));
+
+
   return (
     <div className="row">
       <div className="column-full">
@@ -18,26 +43,7 @@ export function ViewEntry() {
         </div>
 
         <ul className="entry-ul">
-          <li data-entry-id="">
-            <div className="row">
-              <div className="column-half">
-                <img
-                  className="input-b-radius form-image"
-                  src={placeholderimage}
-                  alt=""
-                />
-              </div>
-              <div className="column-half">
-                <div className="row">
-                  <div className="column-full d-flex justify-between">
-                    <h3>This is test Title</h3>
-                    <i className="fa-solid fa-pencil"></i>
-                  </div>
-                </div>
-                <p></p>
-              </div>
-            </div>
-          </li>
+          {entries}
         </ul>
       </div>
     </div>

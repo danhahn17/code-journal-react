@@ -3,8 +3,13 @@ import { ViewEntry } from './ViewEntry';
 import { NewEntry } from './NewEntry';
 import { EditEntry } from './EditEntry';
 import { Modal } from './Modal';
+import { useState } from 'react';
+
 
 export function CodeJournalWrapper() {
+  const [view, setView] = useState('add')
+
+
   return (
     <div>
       <header className="header purple-background">
@@ -16,7 +21,7 @@ export function CodeJournalWrapper() {
                 <a
                   id="entriesLink"
                   className="entries-link white-text"
-                  href="#">
+                  onClick={() => setView('entries')}>
                   Entries
                 </a>
               </h3>
@@ -24,14 +29,9 @@ export function CodeJournalWrapper() {
           </div>
         </div>
       </header>
-      <ViewEntry />
-      <NewEntry
-        OnType={() => {
-          console.log('bonjour');
-        }}
-      />
-      <EditEntry />
-      <Modal />
+      {view === 'entries' && <ViewEntry />}
+      {view === 'edit' && <EditEntry />}
+      {view === 'add' && <Modal />}
     </div>
   );
 }
