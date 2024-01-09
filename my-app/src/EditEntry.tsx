@@ -63,11 +63,9 @@ export function EditEntry() {
                 </label>
                 <textarea
                   required
-                  class="input-b-color text-padding input-b-radius purple-outline d-block width-100"
+                  className="input-b-color text-padding input-b-radius purple-outline d-block width-100"
                   name="formNotes"
-                  id="formNotes"
-                  cols="30"
-                  rows="10"></textarea>
+                  id="formNotes"></textarea>
               </div>
             </div>
             <div className="row">

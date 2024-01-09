@@ -1,5 +1,7 @@
-// import { FormEvent } from 'react';
+import { FormEvent } from 'react';
+import { useState } from 'react';
 import placeholderimage from './assets/placeholder-image-square.jpg';
+import { addEntry } from './data';
 
 // type NewEntryProps = {
 //   onSubmit: () => void;
@@ -17,6 +19,17 @@ import placeholderimage from './assets/placeholder-image-square.jpg';
 // }
 
 export function NewEntry() {
+  const [title, setTitle] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
+  const [notes, setNotes] = useState('');
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    console.log(`{ Title: ${title}, URL: ${photoURL} , Notes:, ${notes}}`);
+    addEntry({ title: title, notes: notes, photoUrl: photoURL });
+  }
+
   return (
     <div className="row">
       <div className="column-full">
@@ -28,13 +41,13 @@ export function NewEntry() {
           </div>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <li className="entry-ul" data-entry-id="">
             <div className="row">
               <div className="column-half">
                 <img
                   className="input-b-radius form-image"
-                  src={placeholderimage}
+                  src={photoURL || placeholderimage}
                   alt=""
                 />
               </div>
@@ -48,6 +61,8 @@ export function NewEntry() {
                         Title
                       </label>
                       <input
+                        value={title}
+                        onChange={(event) => setTitle(event.target.value)}
                         required
                         className="input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
                         type="text"
@@ -56,10 +71,12 @@ export function NewEntry() {
                       />
                       <label
                         className="margin-bottom-1 d-block"
-                        htmlFor="photoUrk">
+                        htmlFor="photoURL">
                         Photo URL
                       </label>
                       <input
+                        value={photoURL}
+                        onChange={(event) => setPhotoURL(event.target.value)}
                         required
                         className="input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
                         type="text"
@@ -78,6 +95,8 @@ export function NewEntry() {
                   Notes
                 </label>
                 <input
+                  value={notes}
+                  onChange={(event) => setNotes(event.target.value)}
                   required
                   className="input-b-color text-padding input-b-radius purple-outline d-block width-100"
                   name="formNotes"
